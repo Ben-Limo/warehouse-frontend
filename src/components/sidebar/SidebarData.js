@@ -94,7 +94,7 @@ export const SidebarData = [
             },
             {
                 name: "Reports",
-                icon: <InsertChartOutlined  className="sidebarIcon"/>,
+                icon: <InsertChartOutlined />,
                 link: "/reports"
             }
         ]
