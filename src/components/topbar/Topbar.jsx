@@ -9,7 +9,7 @@ function Topbar() {
     <div className='topbar'>
         <div className='topbarWrapper'>
             <div className='topLeft'>
-                <span className='logo'>TECKMILS</span>
+                <span className='logo'>Teckmils</span>
             </div>
             <div className='topRight'>
                 <div className="topbarIconContainer">
