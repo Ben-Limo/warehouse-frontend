@@ -1,5 +1,5 @@
 
-export const FeaturedInfoData = [
+export const FeaturedData = [
     {
         title: "Revenue",
         amount: 545454,

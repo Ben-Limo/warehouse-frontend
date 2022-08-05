@@ -1,29 +1,52 @@
 import React from 'react'
 
-import './topbar.css'
+import './topbar.scss'
 
-import {NotificationsNone, Language, Settings} from '@mui/icons-material';
+import {NotificationsNoneOutlined, 
+        LanguageOutlined, 
+        SearchOutlined,
+        DarkModeOutlined,
+        FullscreenExitOutlined,
+        ChatBubbleOutlineOutlined,
+        ListOutlined} from '@mui/icons-material';
 
-function Topbar() {
+const Topbar = () => {
   return (
     <div className='topbar'>
-        <div className='topbarWrapper'>
-            <div className='topLeft'>
-                <span className='logo'>Teckmils</span>
+        <div className='topbar-wrapper'>
+            <div className='topbar-search'>
+                <input type="text" placeholder="Search..." />
+                <SearchOutlined />
             </div>
-            <div className='topRight'>
-                <div className="topbarIconContainer">
-                    <NotificationsNone />
-                    <span className="topIconBadge">2</span>
+            <div className='topbar-items'>
+                <div className="topbar-items__item">
+                    <LanguageOutlined className='topbar-icon'/>
+                    <span>English</span>
                 </div>
-                <div className="topbarIconContainer">
-                    <Language />
-                    <span className="topIconBadge">2</span>
+                <div className="topbar-items__item">
+                    <DarkModeOutlined className='topbar-icon'/>
                 </div>
-                <div className="topbarIconContainer">
-                    <Settings />
+                <div className="topbar-items__item">
+                    <FullscreenExitOutlined className='topbar-icon'/>
                 </div>
-                <img src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="topAvatar" />
+                <div className="topbar-items__item">
+                    <NotificationsNoneOutlined className='topbar-icon'/>
+                    <div className="counter">2</div>
+                </div>
+                <div className="topbar-items__item">
+                    <ChatBubbleOutlineOutlined className='topbar-icon'/>
+                    <div className="counter">1</div>
+                </div>
+                <div className="topbar-items__item">
+                    <ListOutlined className='topbar-icon'/>
+                </div>
+                <div className="topbar-items__item">
+                    <img 
+                        src='https://robohash.org/laborenihilaut.png?size=50x50&set=set1'
+                        alt='BL'
+                        className='topbar-avatar'
+                    />
+                </div>
             </div>
         </div>
     </div>

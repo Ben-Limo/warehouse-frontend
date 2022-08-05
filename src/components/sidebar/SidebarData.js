@@ -1,35 +1,37 @@
 import React from 'react'
 
 import {
-    Home, 
+    DashboardOutlined,
+    NotificationsNoneOutlined,
+    AccountCircleOutlined,
+    LogoutOutlined,
     Timeline, 
     TrendingUp, 
     PersonOutline, 
-    Inventory2Outlined, 
-    PaidOutlined, 
+    ShopOutlined, 
+    ReceiptOutlined, 
     CategoryOutlined, 
     ShoppingCartOutlined, 
     InsertChartOutlined, 
-    MessageOutlined, 
-    ManageAccountsOutlined} from '@mui/icons-material';
+    SettingsOutlined} from '@mui/icons-material';
 
 export const SidebarData = [
     {
-        title: "Dashboard",
+        title: "Home",
         items: [
             {
-                name: "Home",
-                icon: <Home  className="sidebarIcon"/>,
+                name: "Dashboard",
+                icon: <DashboardOutlined  className="sidebar-icon"/>,
                 link: "/home"
             },
             {
                 name: "Analytics",
-                icon: <Timeline  className="sidebarIcon"/>,
+                icon: <Timeline  className="sidebar-icon"/>,
                 link: "/analytics"
             },
             {
                 name: "Sales",
-                icon: <TrendingUp  className="sidebarIcon"/>,
+                icon: <TrendingUp  className="sidebar-icon"/>,
                 link: "/sales"
             }
         ]
@@ -39,63 +41,63 @@ export const SidebarData = [
         items: [
             {
                 name: "Users",
-                icon: <PersonOutline  className="sidebarIcon"/>,
+                icon: <PersonOutline  className="sidebar-icon"/>,
                 link: "/users"
             },
             {
                 name: "Products",
-                icon: <Inventory2Outlined  className="sidebarIcon"/>,
+                icon: <ShopOutlined  className="sidebar-icon"/>,
                 link: "/products"
             },
             {
                 name: "Categories",
-                icon: <CategoryOutlined  className="sidebarIcon"/>,
+                icon: <CategoryOutlined  className="sidebar-icon"/>,
                 link: "/categories"
             },
             {
                 name: "Materials",
-                icon: <ShoppingCartOutlined  className="sidebarIcon"/>,
+                icon: <ShoppingCartOutlined  className="sidebar-icon"/>,
                 link: "/materials"
             },
             {
                 name: "Transactions",
-                icon: <PaidOutlined  className="sidebarIcon"/>,
+                icon: <ReceiptOutlined  className="sidebar-icon"/>,
                 link: "/transactions"
             },
             {
                 name: "Reports",
-                icon: <InsertChartOutlined  className="sidebarIcon"/>,
+                icon: <InsertChartOutlined  className="sidebar-icon"/>,
                 link: "/reports"
             }
         ]
     },
     {
-        title: "Notifications",
+        title: "Account",
         items: [
             {
-                name: "Messages",
-                icon: <MessageOutlined  className="sidebarIcon"/>,
+                name: "Notifications",
+                icon: <NotificationsNoneOutlined  className="sidebar-icon"/>,
+                link: "/messages"
+            },
+            {
+                name: "Settings",
+                icon: <SettingsOutlined className="sidebar-icon"/>,
                 link: "/messages"
             }
         ]
     },
     {
-        title: "Staff",
+        title: "User",
         items: [
             {
-                name: "Manage",
-                icon: <ManageAccountsOutlined  className="sidebarIcon"/>,
-                link: "/manage"
+                name: "Profile",
+                icon: <AccountCircleOutlined  className="sidebar-icon"/>,
+                link: "/profile"
             },
             {
-                name: "Analytics",
-                icon: <Timeline  className="sidebarIcon"/>,
-                link: "/analytics"
-            },
-            {
-                name: "Reports",
-                icon: <InsertChartOutlined />,
-                link: "/reports"
+                name: "Logout",
+                icon: <LogoutOutlined  className="sidebar-icon"/>,
+                link: "/logout"
             }
         ]
     }
