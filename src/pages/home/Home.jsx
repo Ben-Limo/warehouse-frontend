@@ -1,4 +1,4 @@
-
+import Table from '../../components/table/Table'
 import Chart from '../../components/chart/Chart'
 import Featured from '../../components/featured/Featured'
 import Sidebar from '../../components/sidebar/Sidebar'
@@ -23,7 +23,10 @@ const Home = () => {
           <Featured />
           <Chart />
         </div>
-
+        <div className="home-container__table">
+          <div className="table-title">Latest Transactions</div>
+          <Table />
+        </div>
       </div>
     </div>
   )
