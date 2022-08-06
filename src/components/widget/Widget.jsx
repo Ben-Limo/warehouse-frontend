@@ -6,10 +6,10 @@ import {KeyboardArrowUp,
         ShopOutlined, 
         GroupOutlined} from '@mui/icons-material'
 
-const Widget = ({type}) => {
+const Widget = ({type, amount}) => {
     let data;
 
-    const amount = 2121
+    // const amount = 2121
     const diff = 30
 
     switch (type) {

@@ -8,7 +8,8 @@ import {Table,
 
 import './table.scss'
 
-const TableRecords = () => {
+
+const TableRecords = ({transactionRecords}) => {
     const rows = [
         {
           id: 1143155,
@@ -77,19 +78,19 @@ const TableRecords = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {rows.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell className="table-cell">{row.id}</TableCell>
+        {transactionRecords.map((row) => (
+          <TableRow key={row.trackId}>
+            <TableCell className="table-cell">{row.trackId}</TableCell>
             <TableCell className="table-cell">
               <div className="cell-wrapper">
                 <img src={row.img} alt="" className="image" />
-                {row.product}
+                {row.products}
               </div>
             </TableCell>
             <TableCell className="table-cell">{row.customer}</TableCell>
             <TableCell className="table-cell">{row.date}</TableCell>
             <TableCell className="table-cell">{row.amount}</TableCell>
-            <TableCell className="table-cell">{row.method}</TableCell>
+            <TableCell className="table-cell">{row.paymentMethod}</TableCell>
             <TableCell className="table-cell">
               <span className={`status ${row.status}`}>{row.status}</span>
             </TableCell>
