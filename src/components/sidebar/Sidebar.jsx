@@ -12,8 +12,8 @@ const Sidebar = () => {
             {SidebarData.map((val, key) => {
                 return (
                     <>
-                        <p key={key} className="sidebar-title">{val.title}</p>
-                        <ul className="sidebar-list">
+                        <p className="sidebar-title">{val.title}</p>
+                        <ul key={key} className="sidebar-list">
                             {val.items.map((v,k) => {
                                     return (
                                     <li key={k} 

@@ -10,55 +10,59 @@ import Widget from '../../components/widget/Widget'
 import './home.scss'
 
 const Home = () => {
-  const [transactions, setTransactions] = useState([])
-  const [numTransactions, setNumOfTransactions] = useState()
+  const [transactionList, setTransactionsList] = useState([])
+  const [numberOfTransactions, setNumberOfTransactions] = useState()
   const [totalSales, setTotalSales] = useState()
-  const [numProducts, setNumProducts] = useState()
-  const [numCustomers, setNumCustomers] = useState()
+  const [numberOfProducts, setNumberOfProducts] = useState()
+  const [numberOfCustomers, setNumberOfCustomers] = useState()
   const [transactionRecords, setTransactionRecords] = useState([])
 
   useEffect(() => {
       fetch('http://localhost:8080/api/transactions')
       .then(response => response.json())
       .then(data => {
-        setTransactions(data);
-        setNumOfTransactions(data.length);  
-        setNumCustomers(data.length)
+        setTransactionsList(data);
+        setNumberOfTransactions(data.length);  
         })
       .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
-    transactions.forEach(transaction => {
-      let products = transaction.products
-      let sales = 0
-      let productCounter = 0
-      let transactionDetail = {}
-      products.forEach(product => {
-        sales += product.price
-        transactionDetail["products"] += product.name + ","
+    let transactionsTableRecord = []
+    let productCounter = 0
+    let sumPrices =0
+
+    transactionList.forEach(transaction => {
+      
+      let record = {
+        "trackId" : transaction.id,
+        "imageURL": "",
+        "products": [],
+        "customer": transaction.customer.name,
+        "date": transaction.createdAt, 
+        "amount": 0,
+        "paymentMethod" : transaction.paymentMethod,
+        "status": transaction.status
+
+      }
+
+      transaction.products.forEach(product => {
+        record["imageURL"] += product.imageURL
+        record["amount"] += product.price
+        record["products"].push(product.name)
         productCounter++
       })
 
-      setTotalSales(sales)
-      setNumProducts(productCounter)
+      sumPrices += record["amount"]
+      transactionsTableRecord.push(record)
 
-      transactionDetail["trackId"] = transaction.id
-      transactionDetail["customer"] = transaction.customer.name 
-      transactionDetail["date"] = transaction.createdAt
-      transactionDetail["amount"] = sales
-      transactionDetail["paymentMethod"] = "Cash On Delivery"
-      transactionDetail["status"] = transaction.status
-
-      setTransactionRecords([...transactionRecords, transactionDetail])
     })
-  }, transactions)
+    setTotalSales(sumPrices)
+    setNumberOfProducts(productCounter)
+    setTransactionRecords(transactionsTableRecord)
+    setNumberOfCustomers([...new Set(transactionList.map(item => item.customer.id))].length)
 
-  console.log(transactions)
-  console.log(numTransactions)
-  console.log(totalSales)
-  console.log(numCustomers)
-  console.log(transactionRecords)
+  }, [transactionList])
 
   return (
     <div className='home'>
@@ -66,10 +70,10 @@ const Home = () => {
       <div className='home-container'>
         <Topbar />
         <div className="home-container__widgets">
-          <Widget type="transaction" amount={numTransactions}/>
+          <Widget type="transaction" amount={numberOfTransactions}/>
           <Widget type="sale" amount={totalSales}/>
-          <Widget type="product" amount={numProducts}/>
-          <Widget type="customer" amount={numCustomers}/>
+          <Widget type="product" amount={numberOfProducts}/>
+          <Widget type="customer" amount={numberOfCustomers}/>
         </div>
         <div className="home-container__charts">
           <Featured />
